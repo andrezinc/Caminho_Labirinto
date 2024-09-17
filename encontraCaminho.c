@@ -2,9 +2,9 @@
 /* Andre Costa Castilhano - RA: 2659280, Rafael Goulart Mendes - RA: 2684152 e Thierre Trannin - RA: 2619741       */
 /*=================================================================================================================*/
 /** JUNHO - 2024
-Universidade TecnolÛgica Federal do Paran·
-Departamento AcadÍmico de Inform·tica
-ICSF13 ñ Fundamentos de ProgramaÁ„o 1
+Universidade Tecnol√≥gica Federal do Paran√°
+Departamento Acad√™mico de Inform√°tica
+ICSF13 ‚Äì Fundamentos de Programa√ß√£o 1
 Prof. Bogdan Tomoyuki Nassu
 Profa. Leyza Baldo Dorini
 Prof. Daniel Fernando Pigatto */
@@ -18,12 +18,12 @@ Prof. Daniel Fernando Pigatto */
 #define CAMINHO -1
 #define PARAMETRO 1.25
 
-/** Gera uma matriz com as propoÁıes fornecidas e a preenche com valor -2 em todos os Ìndices.
+/** Gera uma matriz com as propo√ß√µes fornecidas e a preenche com valor -2 em todos os √≠ndices.
  *
- * Par‚metros: unsigned long altura: altura da imagem.
+ * Par√¢metros: unsigned long altura: altura da imagem.
  *             unsigned long largura: largura da imagem.
  *
- * Valor de retorno: a matriz alocada e preenchida. A responsabilidade por desaloc·-la È do
+ * Valor de retorno: a matriz alocada e preenchida. A responsabilidade por desaloc√°-la √© do
  *                   chamador. */
 
 int** geraMatriz(unsigned long altura, unsigned long largura)
@@ -31,32 +31,32 @@ int** geraMatriz(unsigned long altura, unsigned long largura)
     int i, j;
     int** matriz_auxiliar;
 
-    matriz_auxiliar=(int**)malloc(sizeof(int*)*altura); // AlocaÁ„o da primeira coluna da matriz
+    matriz_auxiliar=(int**)malloc(sizeof(int*)*altura); // Aloca√ß√£o da primeira coluna da matriz
 
     for(i=0; i<altura; i++)
-        matriz_auxiliar[i]=(int*)malloc(sizeof(int)*largura); // AlocaÁ„o das linhas da matriz
+        matriz_auxiliar[i]=(int*)malloc(sizeof(int)*largura); // Aloca√ß√£o das linhas da matriz
 
     for(i=0; i<largura; i++)
     {
         for(j=0; j<altura; j++)
-            matriz_auxiliar[j][i]=PAREDE; // Preenche a matriz com -2 em todos os Ìndices
+            matriz_auxiliar[j][i]=PAREDE; // Preenche a matriz com -2 em todos os √≠ndices
     }
 
-    return matriz_auxiliar; // Retorna o endereÁo da matriz
+    return matriz_auxiliar; // Retorna o endere√ßo da matriz
 }
 
-/** Recebe a matriz auxiliar, aloca a matriz de custo e retorna o n˙mero da saÌda com o menor caminho
+/** Recebe a matriz auxiliar, aloca a matriz de custo e retorna o n√∫mero da sa√≠da com o menor caminho
  *
- * Par‚metros: int** matriz_custo: matriz auxiliar.
+ * Par√¢metros: int** matriz_custo: matriz auxiliar.
  *             unsigned long altura: altura da matriz.
  *             unsigned long largura: largura da matriz.
  *
- * Valor de retorno: n˙mero da saÌda com o menor caminho */
+ * Valor de retorno: n√∫mero da sa√≠da com o menor caminho */
 
 unsigned long matrizDeCusto(int** matriz_custo, unsigned long altura, unsigned long largura)
 {
     int tem_maior=1, x=0;
-    unsigned long menor; // Menor n˙mero do pixel preto na ˙ltima coluna da matriz
+    unsigned long menor; // Menor n√∫mero do pixel preto na √∫ltima coluna da matriz
     unsigned long i, j;
 
     while(tem_maior) // Enquanto houver um caminho livre
@@ -71,28 +71,28 @@ unsigned long matrizDeCusto(int** matriz_custo, unsigned long altura, unsigned l
                 {
                     if(matriz_custo[j][(i+1)]==CAMINHO) // Se for caminho livre
                     {
-                        matriz_custo[j][(i+1)]=x+1; // Recebe a dist‚ncia atÈ a saÌda
+                        matriz_custo[j][(i+1)]=x+1; // Recebe a dist√¢ncia at√© a sa√≠da
 
                         tem_maior=1;
                     }
 
                     if(matriz_custo[(j+1)][i]==CAMINHO) // Se for caminho livre
                     {
-                        matriz_custo[(j+1)][i]=x+1; // Recebe a dist‚ncia atÈ a saÌda
+                        matriz_custo[(j+1)][i]=x+1; // Recebe a dist√¢ncia at√© a sa√≠da
 
                         tem_maior=1;
                     }
 
                     if(i>0 && matriz_custo[j][(i-1)]==CAMINHO) // Se for caminho livre
                     {
-                        matriz_custo[j][(i-1)]=x+1; // Recebe a dist‚ncia atÈ a saÌda
+                        matriz_custo[j][(i-1)]=x+1; // Recebe a dist√¢ncia at√© a sa√≠da
 
                         tem_maior=1;
                     }
 
                     if(j>0 && matriz_custo[(j-1)][i]==CAMINHO) // Se for caminho livre
                     {
-                        matriz_custo[(j-1)][i]=x+1; // Recebe a dist‚ncia atÈ a saÌda
+                        matriz_custo[(j-1)][i]=x+1; // Recebe a dist√¢ncia at√© a sa√≠da
 
                         tem_maior=1;
                     }
@@ -101,13 +101,13 @@ unsigned long matrizDeCusto(int** matriz_custo, unsigned long altura, unsigned l
             }
         }
 
-        x++; // Incrementa a dist‚ncia atÈ a saÌda
+        x++; // Incrementa a dist√¢ncia at√© a sa√≠da
 
-        menor=x; // A vari·vel recebe o maior valor possÌvel
+        menor=x; // A vari√°vel recebe o maior valor poss√≠vel
     }
 
-    // Encontra a saÌda do labirinto com o menor caminho
-    for(j=0; j<altura-1; j++) // Verifica cada linha da ˙ltima coluna
+    // Encontra a sa√≠da do labirinto com o menor caminho
+    for(j=0; j<altura-1; j++) // Verifica cada linha da √∫ltima coluna
     {
         if(matriz_custo[j][largura-1]>0 && matriz_custo[j][largura-1]<menor) // Se o caminho for menor
             menor=matriz_custo[j][largura-1]; // Registra o caminho
@@ -118,10 +118,10 @@ unsigned long matrizDeCusto(int** matriz_custo, unsigned long altura, unsigned l
 
 /** Recebe a matriz de custo e faz o calculo para preencher o vetor pontos_vermelhos.
  *
- * Par‚metros: int** matriz: matriz auxiliar.
+ * Par√¢metros: int** matriz: matriz auxiliar.
  *             unsigned long altura: altura da matriz.
  *             unsigned long largura: largura da matriz.
- *             unsigned long numero: menor caminho possÌvel.
+ *             unsigned long numero: menor caminho poss√≠vel.
  *             Coordenada* pontos_vermelhos: vetor do caminho. */
 
 void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, unsigned long numero, Coordenada* pontos_vermelhos)
@@ -130,7 +130,7 @@ void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, un
 
     for(j=1; j<altura-1; j++)
     {
-        if(matriz[j][largura-1]==numero) // Procura a saÌda com o menor caminho
+        if(matriz[j][largura-1]==numero) // Procura a sa√≠da com o menor caminho
         {
             i=largura-1;
 
@@ -144,11 +144,11 @@ void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, un
         }
     }
 
-    while(tem_menor) // C·lculo para verificaÁ„o da posiÁ„o do n˙mero
+    while(tem_menor) // C√°lculo para verifica√ß√£o da posi√ß√£o do n√∫mero
     {
         tem_menor=0; // Inicializa a flag com 0
 
-        if(i>0 && matriz[(j)][(i-1)]==numero-1 ) // Verifica se o n˙mero est· embaixo
+        if(i>0 && matriz[(j)][(i-1)]==numero-1 ) // Verifica se o n√∫mero est√° embaixo
         {
             pontos_vermelhos[contagem].x=i-1;
 
@@ -158,7 +158,7 @@ void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, un
 
             i--;
         }
-        else if(i<largura-1 && matriz[(j)][(i+1)]==numero-1) // Verifica se o n˙mero est· em cima
+        else if(i<largura-1 && matriz[(j)][(i+1)]==numero-1) // Verifica se o n√∫mero est√° em cima
         {
             pontos_vermelhos[contagem].x=i+1;
 
@@ -168,7 +168,7 @@ void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, un
 
             i++;
         }
-        if(j>0 && matriz[(j-1)][(i)]==numero-1) // Verifica se o n˙mero est· ‡ esquerda
+        if(j>0 && matriz[(j-1)][(i)]==numero-1) // Verifica se o n√∫mero est√° √† esquerda
         {
             pontos_vermelhos[contagem].x=i;
 
@@ -178,7 +178,7 @@ void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, un
 
             j--;
         }
-        else if(j<altura-1 && matriz[(j+1)][(i)]==numero-1) // Verifica se o n˙mero est· ‡ direita
+        else if(j<altura-1 && matriz[(j+1)][(i)]==numero-1) // Verifica se o n√∫mero est√° √† direita
         {
             pontos_vermelhos[contagem].x=i;
 
@@ -189,15 +189,15 @@ void calculaPontos(int** matriz, unsigned long altura, unsigned long largura, un
             j++;
         }
 
-        numero--; // Decrementa o n˙mero procurado
+        numero--; // Decrementa o n√∫mero procurado
 
-        contagem--; // Decrementa o Ìndice do vetor
+        contagem--; // Decrementa o √≠ndice do vetor
     }
 }
 
-/** Faz o c·lculo para marcas os pontos pretos e por onde comeÁar a encontrar o caminho.
+/** Faz o c√°lculo para marcas os pontos pretos e por onde come√ßar a encontrar o caminho.
  *
- * Par‚metros: Imagem1C* img: imagem de entrada.
+ * Par√¢metros: Imagem1C* img: imagem de entrada.
  *             Coordenada** caminho: o caminho descoberto.
  *
  * Valor de retorno: tamanho do menor caminho. */
@@ -210,16 +210,16 @@ int encontraCaminho(Imagem1C* img, Coordenada** caminho)
     int media=0;
     unsigned long tamanho=0;
     Coordenada* pontos_vermelhos;
-    int** matriz_auxiliar=geraMatriz(altura,largura); // CriaÁ„o da matriz auxiliar
+    int** matriz_auxiliar=geraMatriz(altura,largura); // Cria√ß√£o da matriz auxiliar
 
     for(i=0; i<largura-1; i++) //
     {
-        media=0; // Inicializa a mÈdia de cada coluna
+        media=0; // Inicializa a m√©dia de cada coluna
 
         for(j=0; j<altura-1; j++)
             media+=img->dados[j][i]; // Soma todos os valores da altura
 
-        media=media/(altura); // Faz a divis„o de media
+        media=media/(altura); // Faz a divis√£o de media
 
         for(j=0; j<altura-1; j++)
         {
