@@ -63,3 +63,15 @@ Função principal que processa a imagem do labirinto, cria e inicializa a matri
   - `img`: Imagem em escala de cinza do labirinto.
   - `caminho`: Ponteiro para o vetor onde o caminho será armazenado.
 - **Retorno:** Número de passos do caminho mais curto, incluindo o ponto de entrada e a saída.
+
+### Resultado praticos:
+![Imagem 1](out1.bmp)
+![Imagem 2](out2.bmp)
+![Imagem 3](out3.bmp)
+![Imagem 4](out4.bmp)
+![Imagem 5](out5.bmp)
+![Imagem 6](out6.bmp)
+![Imagem 7](out7.bmp)
+![Imagem 9](out9.bmp)
+![Imagem 9](out9.bmp)
+![Imagem 10](out10.bmp)           
