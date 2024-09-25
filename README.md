@@ -1,4 +1,7 @@
 # Encontrando Caminho em Labirinto
+O [problema](Problema.pdf) que foi colocado.
+
+A [solução](Solução.pdf) explicando como chegamos nela.
 
 ## Descrição
 
